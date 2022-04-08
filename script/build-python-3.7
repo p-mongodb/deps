@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker build -f Dockerfile-debian9-python37 -t debian9-python37 .
+
+docker run debian9-python37 tar cfJ - -C /opt python37 >debian9-python37.tar.xz
