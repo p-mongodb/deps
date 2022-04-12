@@ -1,0 +1,14 @@
+FROM ubuntu:18.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y gcc curl xz-utils make libssl-dev zlib1g-dev
+
+WORKDIR /work
+
+RUN curl https://www.python.org/ftp/python/3.7.13/Python-3.7.13.tar.xz | tar xfJ -
+
+RUN cd Python-3.7.13 && \
+  ./configure --prefix=/opt/python37 && \
+  make && \
+  make install

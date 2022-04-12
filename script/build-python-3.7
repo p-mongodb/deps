@@ -1,5 +1,11 @@
 #!/bin/sh
 
-docker build -f Dockerfile-debian9-python37 -t debian9-python37 .
+for distro in debian9 ubuntu1804; do
+  if test -f $distro-python37.tar.xz; then
+    echo $distro-python37.tar.xz already exists, remove it to rebuild
+  else
+    docker build -f Dockerfile-$distro-python37 -t $distro-python37 .
 
-docker run debian9-python37 tar cfJ - -C /opt python37 >debian9-python37.tar.xz
+    docker run $distro-python37 tar cfJ - -C /opt python37 >$distro-python37.tar.xz
+  fi
+done
