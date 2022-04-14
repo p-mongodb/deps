@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for distro in debian9 ubuntu1804; do
+for distro in debian9 ubuntu1604 ubuntu1804; do
   if test -f $distro-python37.tar.xz; then
     echo $distro-python37.tar.xz already exists, remove it to rebuild
   else
